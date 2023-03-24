@@ -19,7 +19,7 @@ jobs:
       - aws-s3/copy:
           arguments: '--dryrun'
           aws-access-key-id: AKIAQNAGME2NERNZGC4I
-          aws-secret-access-key: n5m0s9ulm0KV6vYldTUs97yBiO6cqnf
+          aws-secret-access-key: n5m0s9ulm0KV6vYldTUs97yBiO6cqnf/0zW/R3Lk
           from: SampleProject/index.html
           to: 's3://pradeep-cicd-static-website/master'
 
