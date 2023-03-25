@@ -16,6 +16,11 @@ jobs:
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
       - checkout
+      - run:
+          name: The Second Step
+          command: |
+            ls -al
+            echo '^^^The files in your repo^^^'
       - aws-s3/copy:
           arguments: '--dryrun'
           aws-access-key-id: AWS_ACCESS_KEY_ID_BLUE
