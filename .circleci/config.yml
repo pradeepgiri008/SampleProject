@@ -8,6 +8,7 @@ jobs:
       - image: cimg/base:stable
     steps:
       - checkout
+      - run: mkdir bucket && echo "lorem ipsum" > bucket/build_asset.txt
       - when:
           condition:
             equal: [ dev, << pipeline.git.branch >> ]
