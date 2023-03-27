@@ -6,72 +6,16 @@ jobs:
   git-to-s3:
     docker:
       - image: cimg/base:stable
+    environment:
+      CIRCLE_BRANCH: << pipeline.git.branch >>
     steps:
       - checkout
-      - when:
-          condition:
-            equal: [ dev, << pipeline.git.branch >> ]
-          steps:
-            - run:
-                name: The Second Step
-                command: |
-                  ls -al
-                  echo '^^^The files in your repo^^^'
-                  echo "Building branch << pipeline.git.branch >>"
-            - aws-s3/copy:
-                aws-access-key-id: AWS_ACCESS_KEY_ID_BLUE
-                aws-region: AWS_REGION_BLUE
-                aws-secret-access-key: AWS_SECRET_ACCESS_KEY_BLUE
-                from: index.html
-                to: s3://pradeep-cicd-static-website/dev/
-      - when:
-          condition:
-            equal: [ QA, << pipeline.git.branch >> ]
-          steps:
-            - run:
-                name: The Second Step
-                command: |
-                  ls -al
-                  echo '^^^The files in your repo^^^'
-                  echo "Building branch << pipeline.git.branch >>"
-            - aws-s3/copy:
-                aws-access-key-id: AWS_ACCESS_KEY_ID_BLUE
-                aws-region: AWS_REGION_BLUE
-                aws-secret-access-key: AWS_SECRET_ACCESS_KEY_BLUE
-                from: index.html
-                to: s3://pradeep-cicd-static-website/QA/
-      - when:
-          condition:
-            equal: [ master, << pipeline.git.branch >> ]
-          steps:
-            - run:
-                name: The Second Step
-                command: |
-                  ls -al
-                  echo '^^^The files in your repo^^^'
-                  echo "Building branch << pipeline.git.branch >>"
-            - aws-s3/copy:
-                aws-access-key-id: AWS_ACCESS_KEY_ID_BLUE
-                aws-region: AWS_REGION_BLUE
-                aws-secret-access-key: AWS_SECRET_ACCESS_KEY_BLUE
-                from: index.html
-                to: s3://pradeep-cicd-static-website/master/       
-      - when:
-          condition:
-            equal: [ prod, << pipeline.git.branch >> ]
-          steps:
-            - run:
-                name: The Second Step
-                command: |
-                  ls -al
-                  echo '^^^The files in your repo^^^'
-                  echo "Building branch << pipeline.git.branch >>"
-            - aws-s3/copy:
-                aws-access-key-id: AWS_ACCESS_KEY_ID_BLUE
-                aws-region: AWS_REGION_BLUE
-                aws-secret-access-key: AWS_SECRET_ACCESS_KEY_BLUE
-                from: index.html
-                to: s3://pradeep-cicd-static-website/prod/             
+      - aws-s3/copy:
+          aws-access-key-id: AWS_ACCESS_KEY_ID_BLUE
+          aws-region: AWS_REGION_BLUE
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY_BLUE
+          from: index.html
+          to: s3://pradeep-cicd-static-website/$CIRCLE_BRANCH/             
 workflows:
   s3-website-workflow:
     jobs:
