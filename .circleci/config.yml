@@ -55,7 +55,7 @@ jobs:
                 aws-region: AWS_REGION_BLUE
                 aws-secret-access-key: AWS_SECRET_ACCESS_KEY_BLUE
                 from: index.html
-                to: s3://pradeep-cicd-static-website/master/
+                to: s3://pradeep-cicd-static-website/master/       
       - when:
           condition:
             equal: [ prod, << pipeline.git.branch >> ]
@@ -77,7 +77,7 @@ jobs:
                 aws-region: AWS_REGION_BLUE
                 aws-secret-access-key: AWS_SECRET_ACCESS_KEY_BLUE
                 from: index.html
-                to: s3://pradeep-cicd-static-website/prod/            
+                to: s3://pradeep-cicd-static-website/prod/             
 workflows:
   s3-website-workflow:
     jobs:
