@@ -70,8 +70,8 @@ jobs:
                 aws-access-key-id: AWS_ACCESS_KEY_ID_BLUE
                 aws-region: AWS_REGION_BLUE
                 aws-secret-access-key: AWS_SECRET_ACCESS_KEY_BLUE 
-                from: prod, <<pipeline.git.branch>>
-                to: 's3://pradeep-cicd-static-website/prod'
+                from: s3://pradeep-cicd-static-website/prod/
+                to: 's3://pradeep-cicd-static-website/prod/
             - aws-s3/copy:
                 aws-access-key-id: AWS_ACCESS_KEY_ID_BLUE
                 aws-region: AWS_REGION_BLUE
