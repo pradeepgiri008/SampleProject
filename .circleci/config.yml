@@ -19,7 +19,10 @@ jobs:
                   echo '^^^The files in your repo^^^'
                   echo "Building branch << pipeline.git.branch >>"
             - run: mkdir bucket && echo "lorem ipsum" > bucket/build_asset.txt
-            - aws-s3/sync: 
+            - aws-s3/sync:
+                aws-access-key-id: AWS_ACCESS_KEY_ID_BLUE
+                aws-region: AWS_REGION_BLUE
+                aws-secret-access-key: AWS_SECRET_ACCES
                 from: dev
                 to: s3://pradeep-cicd-static-website/dev/
             - aws-s3/copy:
@@ -40,6 +43,9 @@ jobs:
                   echo "Building branch << pipeline.git.branch >>"
             - run: mkdir bucket && echo "lorem ipsum" > bucket/build_asset.txt
             - aws-s3/sync: 
+                aws-access-key-id: AWS_ACCESS_KEY_ID_BLUE
+                aws-region: AWS_REGION_BLUE
+                aws-secret-access-key: AWS_SECRET_ACCES
                 from: QA
                 to: s3://pradeep-cicd-static-website/QA/
             - aws-s3/copy:
@@ -60,6 +66,9 @@ jobs:
                   echo "Building branch << pipeline.git.branch >>"
             - run: mkdir bucket && echo "lorem ipsum" > bucket/build_asset.txt
             - aws-s3/sync: 
+                aws-access-key-id: AWS_ACCESS_KEY_ID_BLUE
+                aws-region: AWS_REGION_BLUE
+                aws-secret-access-key: AWS_SECRET_ACCES
                 from: master
                 to: s3://pradeep-cicd-static-website/master/
             - aws-s3/copy:
