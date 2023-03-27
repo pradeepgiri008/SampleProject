@@ -22,7 +22,7 @@ jobs:
             - aws-s3/sync:
                 aws-access-key-id: AWS_ACCESS_KEY_ID_BLUE
                 aws-region: AWS_REGION_BLUE
-                aws-secret-access-key: AWS_SECRET_ACCES
+                aws-secret-access-key: AWS_SECRET_ACCESS_KEY_BLUE
                 from: dev
                 to: s3://pradeep-cicd-static-website/dev/
             - aws-s3/copy:
@@ -45,7 +45,7 @@ jobs:
             - aws-s3/sync: 
                 aws-access-key-id: AWS_ACCESS_KEY_ID_BLUE
                 aws-region: AWS_REGION_BLUE
-                aws-secret-access-key: AWS_SECRET_ACCES
+                aws-secret-access-key: AWS_SECRET_ACCESS_KEY_BLUE
                 from: QA
                 to: s3://pradeep-cicd-static-website/QA/
             - aws-s3/copy:
@@ -68,7 +68,7 @@ jobs:
             - aws-s3/sync: 
                 aws-access-key-id: AWS_ACCESS_KEY_ID_BLUE
                 aws-region: AWS_REGION_BLUE
-                aws-secret-access-key: AWS_SECRET_ACCES
+                aws-secret-access-key: AWS_SECRET_ACCESS_KEY_BLUE
                 from: master
                 to: s3://pradeep-cicd-static-website/master/
             - aws-s3/copy:
