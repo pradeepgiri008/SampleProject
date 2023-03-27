@@ -10,22 +10,17 @@ jobs:
       CIRCLE_BRANCH: << pipeline.git.branch >>
     steps:
       - checkout
-      - when:
-          condition:
-            equal: [ dev, << pipeline.git.branch >> ]
-          steps:
-            - run:
-                name: The Second Step
-                command: |
-                  ls -al
-                  echo '^^^The files in your repo^^^'
-                  echo "Building branch $CIRCLE_BRANCH"
-            - aws-s3/copy:
-                aws-access-key-id: AWS_ACCESS_KEY_ID_BLUE
-                aws-region: AWS_REGION_BLUE
-                aws-secret-access-key: AWS_SECRET_ACCESS_KEY_BLUE
-                from: index.html
-                to: s3://pradeep-cicd-static-website/$CIRCLE_BRANCH/             
+      - run:
+          name: The Second Step
+          command: |
+            ls -al
+            echo "Building branch $CIRCLE_BRANCH"
+      - aws-s3/copy:
+          aws-access-key-id: AWS_ACCESS_KEY_ID_BLUE
+          aws-region: AWS_REGION_BLUE
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY_BLUE
+          from: index.html
+          to: s3://pradeep-cicd-static-website/$CIRCLE_BRANCH/             
 workflows:
   s3-website-workflow:
     jobs:
