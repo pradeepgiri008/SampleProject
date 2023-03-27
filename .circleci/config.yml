@@ -23,7 +23,7 @@ jobs:
                 aws-access-key-id: AWS_ACCESS_KEY_ID_BLUE
                 aws-region: AWS_REGION_BLUE
                 aws-secret-access-key: AWS_SECRET_ACCESS_KEY_BLUE
-                from: dev
+                from: index.html
                 to: s3://pradeep-cicd-static-website/dev/
             - aws-s3/copy:
                 aws-access-key-id: AWS_ACCESS_KEY_ID_BLUE
@@ -46,7 +46,7 @@ jobs:
                 aws-access-key-id: AWS_ACCESS_KEY_ID_BLUE
                 aws-region: AWS_REGION_BLUE
                 aws-secret-access-key: AWS_SECRET_ACCESS_KEY_BLUE
-                from: QA
+                from: index.html
                 to: s3://pradeep-cicd-static-website/QA/
             - aws-s3/copy:
                 aws-access-key-id: AWS_ACCESS_KEY_ID_BLUE
@@ -69,7 +69,7 @@ jobs:
                 aws-access-key-id: AWS_ACCESS_KEY_ID_BLUE
                 aws-region: AWS_REGION_BLUE
                 aws-secret-access-key: AWS_SECRET_ACCESS_KEY_BLUE
-                from: master
+                from: index.html
                 to: s3://pradeep-cicd-static-website/master/
             - aws-s3/copy:
                 aws-access-key-id: AWS_ACCESS_KEY_ID_BLUE
