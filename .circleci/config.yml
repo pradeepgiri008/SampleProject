@@ -10,11 +10,6 @@ jobs:
       CIRCLE_BRANCH: << pipeline.git.branch >>
     steps:
       - checkout
-      - run:
-          name: The Second Step
-          command: |
-            ls -al
-            echo "Building branch $CIRCLE_BRANCH"
       - aws-s3/copy:
           aws-access-key-id: AWS_ACCESS_KEY_ID_BLUE
           aws-region: AWS_REGION_BLUE
